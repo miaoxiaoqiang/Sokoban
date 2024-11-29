@@ -1,0 +1,63 @@
+﻿<Window x:Class="Sokoban.StageClearWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sokoban"
+        mc:Ignorable="d"
+        Width="356" Height="332"
+        ShowInTaskbar="False"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ResizeMode="NoResize"
+        WindowStartupLocation="Manual">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.8*"/>
+        </Grid.RowDefinitions>
+        <Image Grid.Row="0" Grid.RowSpan="4"
+               Source="/Resources/Images/StageClear.png"
+               Width="356" Height="332"
+               SnapsToDevicePixels="True" UseLayoutRounding="True"
+               RenderOptions.BitmapScalingMode="HighQuality"/>
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.RowSpan="2">
+            <Image Grid.Row="1" Grid.RowSpan="2"
+                   Width="157.5" Height="41" Margin="0, 5, 0, 0"
+                   Source="/Resources/Images/Clear_1.png"
+                   SnapsToDevicePixels="True" UseLayoutRounding="True"
+                   RenderOptions.BitmapScalingMode="HighQuality"/>
+            <TextBlock Text="--" Margin="0, 2, 0, 0"
+                       x:Name="StageNumber"
+                       FontFamily="{StaticResource UIFont}" FontSize="55" FontWeight="Bold"
+                       Foreground="Red"
+                       VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Image Grid.Row="0" Grid.RowSpan="4"
+                   Width="157.5" Height="41"
+                   Source="/Resources/Images/Clear_2.png"
+                   SnapsToDevicePixels="True" UseLayoutRounding="True"
+                   RenderOptions.BitmapScalingMode="HighQuality"/>
+        </StackPanel>
+        <Image Grid.Row="3"
+               Cursor="Hand"
+               HorizontalAlignment="Left" VerticalAlignment="Top"
+               Margin="80, 10, 0, 0"
+               Source="/Resources/Images/Cancel.png"
+               Width="86" Height="27"
+               SnapsToDevicePixels="True" UseLayoutRounding="True"
+               RenderOptions.BitmapScalingMode="HighQuality"
+               x:Name="BtnCancelGame"/>
+        <Image Grid.Row="3"
+               Cursor="Hand"
+               HorizontalAlignment="Right" VerticalAlignment="Top"
+               Margin="0, 10, 80, 0"
+               Source="/Resources/Images/NextStage.png"
+               Width="86" Height="27"
+               SnapsToDevicePixels="True" UseLayoutRounding="True"
+               RenderOptions.BitmapScalingMode="HighQuality"
+               x:Name="BtnNextStage"/>
+    </Grid>
+</Window>

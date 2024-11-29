@@ -1,0 +1,89 @@
+﻿<Page x:Class="Sokoban.StagePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:CustomControl="clr-namespace:Sokoban.Componets"
+      xmlns:CustomConveter="clr-namespace:Sokoban.Converters"
+      xmlns:CustomProperty="clr-namespace:Sokoban.AttachedProperty"
+      xmlns:local="clr-namespace:Sokoban"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="470"
+      Style="{StaticResource PageLoad}" FontFamily="{StaticResource UIFont}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Image Grid.Row="0" x:Name="BtnBack"
+               Cursor="Hand"
+               Width="33" Height="30"
+               HorizontalAlignment="Left" VerticalAlignment="Top"
+               Margin="5, 5, 0, 0"
+               Source="/Resources/Images/Home.png"
+               SnapsToDevicePixels="True"
+               UseLayoutRounding="True"
+               RenderOptions.BitmapScalingMode="HighQuality"/>
+        <Image Grid.Row="0" x:Name="BtnRefresh" ToolTip='刷新'
+               Cursor="Hand"
+               Width="33" Height="30"
+               HorizontalAlignment="Right" VerticalAlignment="Top"
+               Margin="0, 5, 5, 0"
+               Source="/Resources/Images/Refresh.png"
+               SnapsToDevicePixels="True"
+               UseLayoutRounding="True"
+               RenderOptions.BitmapScalingMode="HighQuality"/>
+        <Image Source="/resources/images/guanqia.png" Margin="0, 10"
+               Grid.Row="0" Grid.RowSpan="2" Width="83" Height="41"
+               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Image Source="/Resources/Images/Prev.png"
+               Width="31" Height="30"
+               Cursor="Hand" Visibility="Hidden"
+               SnapsToDevicePixels="True"
+               UseLayoutRounding="True"
+               RenderOptions.BitmapScalingMode="HighQuality"
+               HorizontalAlignment="Left"
+               Margin="15, 40, 0, 0"
+               x:Name="BtnPrev"/>
+        <Image Source="/Resources/Images/Next.png"
+               Width="31" Height="30"
+               Cursor="Hand" Visibility="Hidden"
+               SnapsToDevicePixels="True"
+               UseLayoutRounding="True"
+               RenderOptions.BitmapScalingMode="HighQuality"
+               HorizontalAlignment="Right"
+               Margin="0, 40, 15, 0"
+               x:Name="BtnLast"/>
+        <Border Grid.Row="2" Width="460" Height="520"
+                Background="#FF505050"
+                CornerRadius="12"
+                Opacity="0.5" BorderThickness="1"
+                Margin="10, 0, 10, 5"/>
+        <Border CornerRadius="12"
+                Grid.Row="2"
+                BorderThickness="1"
+                Width="460" Height="520"
+                Margin="10, 0, 10, 5" Padding="0, 10">
+            <ScrollViewer VerticalScrollBarVisibility="Hidden"
+                          HorizontalScrollBarVisibility="Disabled"
+                          PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
+                <ItemsControl x:Name="StageItemsControl">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <CustomControl:StageControl Width="80" Height="80"
+                                                        Margin="10, 15, 0, 0"
+                                                        MouseDown="StageClick"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</Page>

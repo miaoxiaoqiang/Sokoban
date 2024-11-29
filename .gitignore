@@ -30,3 +30,15 @@
 *.exe
 *.out
 *.app
+
+Sokoban/.vs/
+Sokoban/Sokoban/.vs/
+Sokoban/Sokoban/bin/
+Sokoban/Sokoban/obj/
+Sokoban/SokobanMapEdit/.vs/
+Sokoban/SokobanMapEdit/bin/
+Sokoban/SokobanMapEdit/obj/
+Sokoban/Sokoban.Help/.vs/
+Sokoban/Sokoban.Help/bin/
+Sokoban/Sokoban.Help/obj/
+Sokoban/material/

@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{86C5225A-55EF-4A6B-82A5-515E80C3DB14}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Sokoban</RootNamespace>
+    <AssemblyName>Sokoban</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Sokoban.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>app.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="AboutWindow.xaml.cs">
+      <DependentUpon>AboutWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AttachedProperty\AttachedProperties.cs" />
+    <Compile Include="Componets\LogViewer\LogViewer.cs" />
+    <Compile Include="Componets\LogViewer\StyledString.cs" />
+    <Compile Include="Componets\Message\Message.cs" />
+    <Compile Include="Componets\StageControl.xaml.cs">
+      <DependentUpon>StageControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\BoolToImageConveter.cs" />
+    <Compile Include="Converters\DifficultyToCNConveter.cs" />
+    <Compile Include="Converters\DifficultyToRateConveter.cs" />
+    <Compile Include="Converters\NullToIntConveter.cs" />
+    <Compile Include="Converters\CanRegretConverter.cs" />
+    <Compile Include="Core\Interface\ILayoutGame.cs" />
+    <Compile Include="Core\Interface\IInputKey.cs" />
+    <Compile Include="Core\Interface\IWindow.cs" />
+    <Compile Include="Core\Interface\IStage.cs" />
+    <Compile Include="Model\Direction.cs" />
+    <Compile Include="Model\MoveHistory.cs" />
+    <Compile Include="Model\Coordinate.cs" />
+    <Compile Include="Model\ItemType.cs" />
+    <Compile Include="Model\Stage.cs" />
+    <Compile Include="Notify\NotifyPropertyBase.cs" />
+    <Compile Include="Notify\ObservableStack.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\CursorFactory.cs" />
+    <Compile Include="Utils\CursorSafeHandle.cs" />
+    <Compile Include="Utils\ExtendMethod.cs" />
+    <Compile Include="Utils\IconHelper.cs" />
+    <Compile Include="Utils\Obfuscat\ConfusionGen.cs" />
+    <Compile Include="Utils\Obfuscat\EncodingExtend.cs" />
+    <Compile Include="Utils\Obfuscat\Feistel.cs" />
+    <Compile Include="Utils\Obfuscat\IdObfuscator.cs" />
+    <Compile Include="Core\XSBMapParser.cs" />
+    <Compile Include="Views\MapEdit\MapEditWindow.xaml.cs">
+      <DependentUpon>MapEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MapEdit\SetNewStageWindow.xaml.cs">
+      <DependentUpon>SetNewStageWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Page\GamePage.xaml.cs">
+      <DependentUpon>GamePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Core\ItemBrushFactory.cs" />
+    <Compile Include="Core\StaticObjManager.cs" />
+    <Compile Include="Utils\FileNameSort.cs" />
+    <Compile Include="Views\Page\HomePage.xaml.cs">
+      <DependentUpon>HomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Page\StagePage.xaml.cs">
+      <DependentUpon>StagePage.xaml</DependentUpon>
+    </Compile>
+    <Page Include="AboutWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Componets\Message\Message.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Componets\StageControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Style\Fonts.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Style\ListBoxItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Style\ScrollViewer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MapEdit\MapEditWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MapEdit\SetNewStageWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Page\GamePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Page\HomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Converters\StringPathToImageConverter.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Resources\Style\Items.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Page\StagePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Resource Include="Resources\Fonts\svgfont.ttf" />
+    <None Include="App.config" />
+    <None Include="Sokoban.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Guanqia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\StageLock.png" />
+    <Resource Include="Resources\Images\StageUnlock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\PushMan.png" />
+    <Resource Include="Resources\Images\PushManGoal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\ShowStatus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\age.png" />
+    <Resource Include="Resources\Images\bg.png" />
+    <Resource Include="Resources\Images\Cloud.png" />
+    <Resource Include="Resources\Images\Exit.png" />
+    <Resource Include="Resources\Images\Shine.png" />
+    <Resource Include="Resources\Images\StartPlay.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Title.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Sun.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\PlayDesc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Next.png" />
+    <Resource Include="Resources\Images\Prev.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Box.png" />
+    <Resource Include="Resources\Images\BoxGoal.png" />
+    <Resource Include="Resources\Images\Floor.png" />
+    <Resource Include="Resources\Images\goal_small.png" />
+    <Resource Include="Resources\Images\Wall.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\StartMapEdit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\BoxHold.png" />
+    <Resource Include="Resources\Images\ClearAll.png" />
+    <Resource Include="Resources\Images\Cursor.png" />
+    <Resource Include="Resources\Images\Edit.png" />
+    <Resource Include="Resources\Images\FloorHold.png" />
+    <Resource Include="Resources\Images\Goal.png" />
+    <Resource Include="Resources\Images\GoalHold.png" />
+    <Resource Include="Resources\Images\Grass.gif" />
+    <Resource Include="Resources\Images\Help.png" />
+    <Resource Include="Resources\Images\Layout.png" />
+    <Resource Include="Resources\Images\ManHold.png" />
+    <Resource Include="Resources\Images\New.png" />
+    <Resource Include="Resources\Images\OpenFile.png" />
+    <Resource Include="Resources\Images\rate_empty.png" />
+    <Resource Include="Resources\Images\rate_full.png" />
+    <Resource Include="Resources\Images\rate_half.png" />
+    <Resource Include="Resources\Images\Remove.png" />
+    <Resource Include="Resources\Images\Save.png" />
+    <Resource Include="Resources\Images\SaveAs.png" />
+    <Resource Include="Resources\Images\WallHold.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\ShowStatus_None.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Check.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

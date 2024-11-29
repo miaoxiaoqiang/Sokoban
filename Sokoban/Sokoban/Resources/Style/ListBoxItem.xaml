@@ -1,0 +1,80 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:CustomConveter="clr-namespace:Sokoban.Converters">
+    
+    <Style x:Key="StageInfoStyle" TargetType="{x:Type ListBoxItem}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                    <Grid Height="50" x:Name="grid">
+                        <Border Background="#FFA7A7A7" Width="56" Height="40"
+                                CornerRadius="4"
+                                HorizontalAlignment="Left"
+                                Margin="5 0 0 0">
+                            <Border.ToolTip>
+                                <ToolTip Content="{Binding Difficulty, Mode=OneWay}"
+                                         ContentStringFormat="难度：{0}"/>
+                            </Border.ToolTip>
+                            <WrapPanel Orientation="Horizontal" Margin="2">
+                                <Image Source="{Binding Difficulty, Mode=OneWay, Converter={x:Static CustomConveter:DifficultyToRateConveter.Instance}, ConverterParameter='1'}"
+                                       SnapsToDevicePixels="True"
+                                       UseLayoutRounding="True"
+                                       RenderOptions.BitmapScalingMode="HighQuality"
+                                       Width="16" Height="16"
+                                       Margin="0, 0, 0, 0"/>
+                                <Image Source="{Binding Difficulty, Mode=OneWay, Converter={x:Static CustomConveter:DifficultyToRateConveter.Instance}, ConverterParameter='2'}"
+                                       SnapsToDevicePixels="True"
+                                       UseLayoutRounding="True"
+                                       RenderOptions.BitmapScalingMode="HighQuality"
+                                       Width="16" Height="16"
+                                       Margin="2, 0, 2, 0"/>
+                                <Image Source="{Binding Difficulty, Mode=OneWay, Converter={x:Static CustomConveter:DifficultyToRateConveter.Instance}, ConverterParameter='3'}"
+                                       SnapsToDevicePixels="True"
+                                       UseLayoutRounding="True"
+                                       RenderOptions.BitmapScalingMode="HighQuality"
+                                       Width="16" Height="16"
+                                       Margin="0, 0, 0, 0"/>
+                                <Image Source="{Binding Difficulty, Mode=OneWay, Converter={x:Static CustomConveter:DifficultyToRateConveter.Instance}, ConverterParameter='4'}"
+                                       SnapsToDevicePixels="True"
+                                       UseLayoutRounding="True"
+                                       RenderOptions.BitmapScalingMode="HighQuality"
+                                       Width="16" Height="16"
+                                       Margin="0, 2, 0, 0"/>
+                                <Image Source="{Binding Difficulty, Mode=OneWay, Converter={x:Static CustomConveter:DifficultyToRateConveter.Instance}, ConverterParameter='5'}"
+                                       SnapsToDevicePixels="True"
+                                       UseLayoutRounding="True"
+                                       RenderOptions.BitmapScalingMode="HighQuality"
+                                       Width="16" Height="16"
+                                       Margin="2, 2, 2, 0"/>
+                                <Image Source="{Binding Difficulty, Mode=OneWay, Converter={x:Static CustomConveter:DifficultyToRateConveter.Instance}, ConverterParameter='6'}"
+                                       SnapsToDevicePixels="True"
+                                       UseLayoutRounding="True"
+                                       RenderOptions.BitmapScalingMode="HighQuality"
+                                       Width="16" Height="16"
+                                       Margin="0, 2, 0, 0"/>
+                            </WrapPanel>
+                        </Border>
+                        <TextBlock Text="{Binding Title}" Margin="64 7 0 0" FontSize="13"/>
+                        <TextBlock Text="{Binding Author}" Foreground="#808080" Margin="64 30 0 0"/>
+                        <TextBlock Text="{Binding Rows,StringFormat={}{0}行}"
+                                   Foreground="#808080"
+                                   HorizontalAlignment="Right"
+                                   Margin="0 7 5 0"/>
+                        <TextBlock Text="{Binding Cols,StringFormat={}{0}列}"
+                                   Foreground="#808080"
+                                   HorizontalAlignment="Right"
+                                   Margin="0 30 5 0"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="grid" Property="Background" Value="#fceeb9"/>
+                        </Trigger>
+                        <Trigger Property="Selector.IsSelected" Value="true">
+                            <Setter TargetName="grid" Property="Background" Value="#fae388"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

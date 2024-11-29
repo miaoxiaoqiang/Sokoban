@@ -1,0 +1,153 @@
+﻿<Window x:Class="Sokoban.AboutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sokoban"
+        mc:Ignorable="d"
+        Title="说明" Height="400" Width="600"
+        ShowInTaskbar="False"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        FontFamily="{StaticResource UIFont}">
+    <Window.Resources>
+        <Style x:Key="linkstyle" TargetType="Hyperlink">
+            <Setter Property ="Foreground" Value ="#209AC2" />
+            <!-- 清除文字修饰(去掉下划线) -->
+            <Setter Property="TextBlock.TextDecorations" Value="{x:Null}" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property ="Foreground" Value="Blue" />
+                    <!-- 在鼠标悬停时显示下划线 -->
+                    <Setter Property="TextBlock.TextDecorations">
+                        <Setter.Value>
+                            <TextDecorationCollection>
+                                <TextDecoration Location="Baseline" />
+                            </TextDecorationCollection>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <RichTextBox Padding="5, 10, 5, 5"
+                     Background="#FF1E1E1E" Foreground="White"
+                     IsReadOnly="True" VerticalScrollBarVisibility="Auto" IsDocumentEnabled="True">
+            <FlowDocument>
+                <Paragraph TextAlignment="Center">
+                    <Run Text="推箱子" Foreground="#FFEF8C8C" FontWeight="Bold" FontSize="25"/>
+                </Paragraph>
+                <Paragraph TextIndent="15">
+                    <Run>本程序是用</Run>
+                    <Run Foreground="Yellow">C#</Run>
+                    <Run>语言和</Run>
+                    <Run Foreground="Yellow">WPF</Run>
+                    <Run>技术共同开发，其界面简洁，操作简单。支持键盘↑↓←→四个箭头按键控制人物移动，支持地图创建和编辑功能，可在画布上点击鼠标左键放置素材，点击右键删除素材。</Run>
+                    <Run>声明：本程序提供的地图设计功能尚未对地图进行可行性验证，比如自主设计地图时可能忘记添加（</Run>
+                    <Run Foreground="#FFABFF46">人、箱子、目标点、墙壁和地砖</Run>
+                    <Run>）任意元素，使用时请注意。</Run>
+                    <LineBreak/>
+                    <Run>&#xa0;&#xa0;&#xa0;&#xa0;程序目录结构如下：</Run>
+                    <LineBreak/>
+                    <Run>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;(1)&#xa0;</Run>
+                    <Run Foreground="#FF43E343">Sokoban.exe</Run>
+                    <Run>&#xa0;推箱子游戏主程序</Run>
+                    <LineBreak/>
+                    <Run>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;(2)&#xa0;</Run>
+                    <Run Foreground="#FF43E343">map</Run>
+                    <Run>&#xa0;这是存放关卡地图文件的文件夹，其中文件扩展名为</Run>
+                    <Run Foreground="#FFF7C579">.map</Run>
+                    <Run>，文件名必须按数字（不可有其它字符）序号递增命名。</Run>
+                    <LineBreak/>
+                    <Run>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;(3)&#xa0;</Run>
+                    <Run Foreground="#FF43E343">finished</Run>
+                    <Run>&#xa0;这是存放关卡已通关的文件。当你通关一个关卡时，会自动生成解答步骤文件，扩展名为</Run>
+                    <Run Foreground="#FFF7C579">.clear</Run>
+                    <Run>。注意：假若你删除任意解答步骤文件，关卡界面中对应的关卡（解答步骤文件名与关卡文件名相同）会失去通关数据。</Run>
+                </Paragraph>
+                <Paragraph>
+                    <Run>&#xa0;&#xa0;&#xa0;&#xa0;本程序使用的关卡文件采用通用的</Run>
+                    <Hyperlink Foreground="Red"
+                               FontWeight="Bold"
+                               Style="{StaticResource linkstyle}" ToolTip="详情"
+                               NavigateUri="https://sokoban.cn/xsb_lurd.php"
+                               RequestNavigate="Hyperlink_RequestNavigate">XSB</Hyperlink>
+                    <Run>格式，如下：</Run>
+                    <LineBreak/>
+                    <Run>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;字符</Run>
+                    <Run>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;含义</Run>
+                    <LineBreak/>
+                    <Run>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;@</Run>
+                    <Run>&#xa0;==></Run>
+                    <Run>人 (man)</Run>
+                    <LineBreak/>
+                    <Run FontSize="16">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;+</Run>
+                    <Run>&#xa0;==></Run>
+                    <Run>人在目标点 (man on goal)</Run>
+                    <LineBreak/>
+                    <Run FontSize="13">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;$</Run>
+                    <Run>&#xa0;==></Run>
+                    <Run>箱子 (box)</Run>
+                    <LineBreak/>
+                    <Run FontSize="15">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;*</Run>
+                    <Run>&#xa0;==></Run>
+                    <Run>箱子在目标点 (box on goal)</Run>
+                    <LineBreak/>
+                    <Run FontSize="13">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;#</Run>
+                    <Run>&#xa0;==></Run>
+                    <Run>墙 (wall)</Run>
+                    <LineBreak/>
+                    <Run>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;.</Run>
+                    <Run>&#xa0;&#xa0;==></Run>
+                    <Run>目标点 (goal)</Run>
+                    <LineBreak/>
+                    <Run>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;-</Run>
+                    <Run>&#xa0;==></Run>
+                    <Run>地板 (floor)</Run>
+                    <LineBreak/>
+                    <Run>本程序规定墙体外面空白区域用“_”代替。当你在画布上布局时，如果你把人物或箱子放置在目标点上，其颜色将会变化。</Run>
+                </Paragraph>
+                <Paragraph>
+                    <Run>例子（example）</Run>
+                    <LineBreak/>
+                    <Run>;8,8,1</Run>
+                    <LineBreak/>
+                    <Run>----#####----------</Run>
+                    <LineBreak/>
+                    <Run>----#---#----------</Run>
+                    <LineBreak/>
+                    <Run>----#$--#----------</Run>
+                    <LineBreak/>
+                    <Run>--###--$##---------</Run>
+                    <LineBreak/>
+                    <Run>--#--$-$-#---------</Run>
+                    <LineBreak/>
+                    <Run>###-#-##-#---######</Run>
+                    <LineBreak/>
+                    <Run>#---#-##-#####--..#</Run>
+                    <LineBreak/>
+                    <Run>#-$--$----------..#</Run>
+                    <LineBreak/>
+                    <Run>#####-###-#@##--..#</Run>
+                    <LineBreak/>
+                    <Run>----#-----#########</Run>
+                    <LineBreak/>
+                    <Run>----#######--------</Run>
+                    <LineBreak/>
+                    <Run>Title:XXX</Run>
+                    <LineBreak/>
+                    <Run>Author:XXX</Run>
+                    <LineBreak/>
+                    <Run>第一行为注释信息，数字含义及取值范围分别为地图行数(1-30)，地图列数(1-30)以及关卡难度(1-12)。</Run>
+                    <Run>最后两行为附加元数据，含义分别为关卡标题以及关卡作者</Run>
+                </Paragraph>
+                <Paragraph TextIndent="15">
+                    <Run>声明：</Run>
+                    <Run>本程序所用到的游戏素材（例如：图片、音频）来源均来自互联网。</Run>
+                    <Run Foreground="Red" FontWeight="Bold">仅用于编程学习交流，却勿用于商业用途。</Run>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+    </Grid>
+</Window>

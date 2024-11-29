@@ -1,0 +1,49 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ImageBrush x:Key="GoalSmall"
+        ImageSource="/Resources/Images/goal_small.png"
+        RenderOptions.BitmapScalingMode="HighQuality" />
+
+    <ImageBrush x:Key="Wall"
+        ImageSource="/Resources/Images/Wall.png"
+        RenderOptions.BitmapScalingMode="HighQuality" />
+    <ImageBrush x:Key="Man"
+        ImageSource="/Resources/Images/PushMan.png"
+        RenderOptions.BitmapScalingMode="HighQuality" />
+    <ImageBrush x:Key="ManGoal"
+        ImageSource="/Resources/Images/PushManGoal.png"
+        RenderOptions.BitmapScalingMode="HighQuality" />
+    <ImageBrush x:Key="Box"
+        ImageSource="/Resources/Images/Box.png"
+        RenderOptions.BitmapScalingMode="HighQuality" />
+    <ImageBrush x:Key="BoxGoal"
+        ImageSource="/Resources/Images/BoxGoal.png"
+        RenderOptions.BitmapScalingMode="HighQuality" />
+    <ImageBrush x:Key="Floor"
+        ImageSource="/Resources/Images/Floor.png"
+        RenderOptions.BitmapScalingMode="HighQuality" />
+    <ImageBrush x:Key="Grass"
+            ImageSource="/Resources/Images/Grass.gif"
+            RenderOptions.BitmapScalingMode="HighQuality" />
+
+    <BitmapImage x:Key="StarFull" UriSource="/resources/Images/starfull.png"/>
+    <BitmapImage x:Key="StarEmpty" UriSource="/resources/Images/starempty.png"/>
+    <BitmapImage x:Key="StageLock" UriSource="/resources/Images/StageLock.png"/>
+    <BitmapImage x:Key="StageUnLock" UriSource="/resources/Images/StageUnlock.png"/>
+
+    <Style TargetType="{x:Type Page}" x:Key="PageLoad">
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="Loaded">
+                <EventTrigger.Actions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ThicknessAnimation Duration="0:0:.45" Storyboard.TargetProperty="Margin" From="-50,0,50,0" To="0" DecelerationRatio=".9" />
+                            <DoubleAnimation Duration="0:0:.35" Storyboard.TargetProperty="Opacity" From="0" To="1" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger.Actions>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

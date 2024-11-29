@@ -1,0 +1,84 @@
+﻿<Window x:Class="Sokoban.SetNewStageWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sokoban"
+        xmlns:CustomControl="clr-namespace:Sokoban.Componets"
+        mc:Ignorable="d"
+        Title="新关卡设置"
+        Height="300" Width="280"
+        WindowStartupLocation="Manual" ResizeMode="NoResize" ShowInTaskbar="False"
+        FontFamily="{StaticResource UIFont}">
+    <Window.Resources>
+        <Style x:Key="ColRowTextBox" TargetType="TextBox">
+            <Setter Property="Background" Value="White"/>
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="#FF7C7575"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <GroupBox Header="关卡信息">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="5">
+                    <Label Content="标题：" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="TB_Title" VerticalContentAlignment="Center" Width="200" Text="初出茅庐"/>
+                </StackPanel>
+                <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="5">
+                    <Label Content="作者：" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="TB_Author" VerticalContentAlignment="Center" Width="200" Text="佚名"/>
+                </StackPanel>
+                <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="5">
+                    <Label Content="地图行数：" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="TB_Rows" Style="{StaticResource ColRowTextBox}"
+                             VerticalContentAlignment="Center"
+                             Width="30" Text="1"/>
+                    <Label Foreground="Red" Content="1&lt;=value&lt;=30"
+                           VerticalContentAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="5">
+                    <Label Content="地图列数："
+                           VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="TB_Cols" Style="{StaticResource ColRowTextBox}"
+                             VerticalContentAlignment="Center"
+                             Width="30" Text="1"/>
+                    <Label Foreground="Red" Content="1&lt;=value&lt;=30"
+                           VerticalContentAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="5">
+                    <Label Content="难度：" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="TB_Level" VerticalContentAlignment="Center" Width="20" Text="1"/>
+                    <Label Foreground="Red" Content="1&lt;=value&lt;=12"
+                           VerticalContentAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Grid.Row="5" Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            Margin="5">
+                    <Button Content="应用"
+                            Cursor="Hand"
+                            x:Name="BtnSave"
+                            VerticalContentAlignment="Center"
+                            Width="48" Height="24"
+                            ToolTip="保存当前所设置的布局及数据"/>
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+        <Border BorderThickness="0"
+                Grid.Column="0" Grid.ColumnSpan="3"
+                Background="Transparent" x:Name="mask"
+                Visibility="Collapsed" Panel.ZIndex="50"/>
+        <CustomControl:MessageHost Token="NewStageMessageToken"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    </Grid>
+</Window>
